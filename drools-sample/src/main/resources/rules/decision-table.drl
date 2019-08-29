@@ -1,0 +1,59 @@
+package rules;
+//generated from Decision Table
+import com.rsoft.integral.rule.EventFact;
+function void print(String str){
+System.out.println(str);
+}
+// rule values at A13, header at A8
+rule "RULE-001"
+	salience 65523
+	activation-group "G01"
+	no-loop true
+	lock-on-active true
+	when
+		$f:EventFact(eventCode == "login", attrs["clc"]>28)
+	then
+		$f.setScore(100);
+		print("连续登录大于28天增加100积分");
+end
+
+// rule values at A14, header at A8
+rule "RULE-002"
+	salience 65522
+	activation-group "G01"
+	no-loop true
+	lock-on-active true
+	when
+		$f:EventFact(eventCode == "login", attrs["clc"]>20)
+	then
+		$f.setScore(80);
+		print("连续登录大于20天增加100积分");
+end
+
+// rule values at A15, header at A8
+rule "RULE-003"
+	salience 65521
+	activation-group "G01"
+	no-loop true
+	lock-on-active true
+	when
+		$f:EventFact(eventCode == "login", attrs["clc"]>15)
+	then
+		$f.setScore(50);
+		print("连续登录大于15天增加50积分");
+end
+
+// rule values at A16, header at A8
+rule "RULE-004"
+	salience 65520
+	activation-group "G01"
+	no-loop true
+	lock-on-active true
+	when
+		$f:EventFact(eventCode == "login", attrs["clc"]>7)
+	then
+		$f.setScore(20);
+		print("连续登录大于7天增加20积分");
+end
+
+

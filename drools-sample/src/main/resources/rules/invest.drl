@@ -1,0 +1,63 @@
+package rules
+
+import com.rsoft.integral.rule.EventFact;
+
+rule "user invest 小于5000"
+	no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $f : EventFact(eventCode == "invest",attrs['amount']<5000)
+    then
+        $f.setScore(5);
+        System.out.println("用户投资"+$f.getAttrs().get("amount")+",增加5积分");
+        update($f);
+end
+
+rule "user invest [5000,10000)"
+	no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $f : EventFact(eventCode == "invest",attrs['amount']>=5000,attrs['amount']<10000)
+    then
+        $f.setScore(10);
+        System.out.println("用户投资"+$f.getAttrs().get("amount")+",增加10积分");
+        update($f);
+end
+
+rule "user invest [10000,50000)"
+	no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $f : EventFact(eventCode == "invest",attrs['amount']>=10000,attrs['amount']<50000)
+    then
+        $f.setScore(15);
+        System.out.println("用户投资"+$f.getAttrs().get("amount")+",增加15积分");
+        update($f);
+end
+
+rule "user invest [50000,100000)"
+	no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $f : EventFact(eventCode == "invest",attrs['amount']>=50000,attrs['amount']<100000)
+    then
+        $f.setScore(20);
+        System.out.println("用户投资"+$f.getAttrs().get("amount")+",增加20积分");
+        update($f);
+end
+
+rule "user invest [100000,∝)"
+	no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $f : EventFact(eventCode == "invest",attrs['amount']>=100000)
+    then
+        $f.setScore(50);
+        System.out.println("用户投资"+$f.getAttrs().get("amount")+",增加50积分");
+        update($f);
+end

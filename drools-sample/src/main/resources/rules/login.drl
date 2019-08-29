@@ -1,0 +1,15 @@
+package rules
+
+import com.rsoft.integral.rule.EventFact;
+
+rule "user login"
+	no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $f : EventFact(eventCode == "login")
+    then
+        $f.setScore(5);
+        System.out.println("用户"+$f.getUserCode()+"登录,增加8积分");
+        update($f);
+end

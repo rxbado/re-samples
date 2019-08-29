@@ -1,0 +1,15 @@
+package rules
+
+import com.rsoft.integral.rule.EventFact;
+
+rule "user account-create"
+	no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $f : EventFact(eventCode == "account-create")
+    then
+        $f.setScore(15);
+        System.out.println("用户"+$f.getUserCode()+"开户,增加15积分");
+        update($f);
+end

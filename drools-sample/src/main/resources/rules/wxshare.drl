@@ -1,0 +1,15 @@
+package rules
+
+import com.rsoft.integral.rule.EventFact;
+
+rule "user wxshare"
+	no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $f : EventFact(eventCode == "wx")
+    then
+        $f.setScore(5);
+        System.out.println("用户"+$f.getUserCode()+"分享,增加2积分");
+        update($f);
+end

@@ -1,0 +1,15 @@
+package rules
+
+import com.rsoft.integral.rule.EventFact;
+
+rule "user invest productType-1"
+	no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $f : EventFact(eventCode == "invest",attrs['productType'] == 1)
+    then
+        $f.setScore(30);
+        System.out.println("用户投资"+$f.getAttrs().get("productType")+"产品,增加30积分");
+        update($f);
+end

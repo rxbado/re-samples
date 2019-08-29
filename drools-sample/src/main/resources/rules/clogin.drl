@@ -1,0 +1,55 @@
+package rules
+
+import com.rsoft.integral.rule.EventFact;
+
+rule "user login 28 day"
+	no-loop true
+    lock-on-active true
+    salience 40
+    activation-group "continue-login"
+    when
+        $f : EventFact(eventCode == "login",attrs["clc"]>=28)
+    then
+        $f.setScore(100);
+        System.out.println("用户"+$f.getUserCode()+"连续登录大于30天,增加100积分");
+        update($f);
+end
+
+rule "user login 15 day"
+	no-loop true
+    lock-on-active true
+    salience 30
+    activation-group "continue-login"
+    when
+        $f : EventFact(eventCode == "login",attrs["clc"]>=15)
+    then
+        $f.setScore(80);
+        System.out.println("用户"+$f.getUserCode()+"连续登录15天,增80积分");
+        update($f);
+end
+
+rule "user login 10 day"
+	no-loop true
+    lock-on-active true
+    salience 20
+    activation-group "continue-login"
+    when
+        $f : EventFact(eventCode == "login",attrs["clc"]>=10)
+    then
+        $f.setScore(50);
+        System.out.println("用户"+$f.getUserCode()+"连续登录10天,增加50积分");
+        update($f);
+end
+
+rule "user login 7 day"
+	no-loop true
+    lock-on-active true
+    salience 10
+    activation-group "continue-login"
+    when
+        $f : EventFact(eventCode == "login",attrs["clc"]>=7)
+    then
+        $f.setScore(15);
+        System.out.println("用户"+$f.getUserCode()+"连续登录7天,增加30积分");
+        update($f);
+end

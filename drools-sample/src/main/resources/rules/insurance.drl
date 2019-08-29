@@ -1,0 +1,15 @@
+package rules
+
+import com.rsoft.integral.rule.EventFact;
+
+rule "user insurance"
+	no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $f : EventFact(eventCode == "insurance")
+    then
+        $f.setScore(50);
+        System.out.println("用户"+$f.getUserCode()+"投保,增加50积分");
+        update($f);
+end

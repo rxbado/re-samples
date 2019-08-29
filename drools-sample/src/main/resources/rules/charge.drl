@@ -1,0 +1,15 @@
+package rules
+
+import com.rsoft.integral.rule.EventFact;
+
+rule "user charge"
+	no-loop true
+    lock-on-active true
+    salience 1
+    when
+        $f : EventFact(eventCode == "charge")
+    then
+        $f.setScore(8);
+        System.out.println("用户"+$f.getUserCode()+"充值,增加8积分");
+        update($f);
+end
