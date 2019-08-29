@@ -5,7 +5,7 @@ import com.rsoft.integral.dao.RuleSetDao;
 import com.rsoft.integral.model.EventSource;
 import com.rsoft.integral.model.RuleSet;
 import com.rsoft.ruleengine.RuleInfo;
-import com.rsoft.ruleengine.RuleSetSource;
+import com.rsoft.ruleengine.RuleSetProvider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Component
 @Primary
-public class DbRuleSetSource implements RuleSetSource {
+public class DbRuleSetSource implements RuleSetProvider {
     @Autowired
     private RuleSetDao ruleSetDao;
     @Autowired
