@@ -6,7 +6,7 @@ import com.rsoft.integral.consts.IntegralConsts;
 import com.rsoft.integral.dao.EventDao;
 import com.rsoft.integral.model.Event;
 import com.rsoft.integral.rule.EventFact;
-import com.rsoft.ruleengine.RuleExecutor;
+import com.rsoft.ruleengine.RuleRunner;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,7 +25,7 @@ public class EventMessageReceiver {
     private Gson gson = new GsonBuilder().create();
 
     @Autowired
-    private RuleExecutor ruleExecutor;
+    private RuleRunner ruleExecutor;
 
     @KafkaListener(topics = { IntegralConsts.INTEGRAL_EVENT_TOPIC, "test-topic" })
     public void listen(ConsumerRecord<?, ?> rec) {

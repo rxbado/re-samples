@@ -1,7 +1,7 @@
 package com.rsoft.drools;
 
 import com.rsoft.DroolsSample;
-import com.rsoft.ruleengine.RuleExecutor;
+import com.rsoft.ruleengine.RuleRunner;
 import com.rsoft.samples.model.Order;
 import com.rsoft.samples.model.User;
 
@@ -20,7 +20,7 @@ import java.util.List;
 @SpringBootTest(classes = DroolsSample.class)
 public class DroolsSceneTests {
     @Autowired
-    RuleExecutor ruleExecutor;
+    RuleRunner ruleExecutor;
 
     @Test
     public void fireRulesTest() throws Exception {

@@ -1,6 +1,6 @@
 package com.rsoft.samples.web;
 
-import com.rsoft.ruleengine.RuleExecutor;
+import com.rsoft.ruleengine.RuleRunner;
 import com.rsoft.ruleengine.RuleLoader;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class RuleController {
     private RuleLoader ruleLoader;
 
     @Autowired
-    private RuleExecutor executor;
+    private RuleRunner runner;
 
     @GetMapping("/")
     public String index() {
@@ -65,7 +65,7 @@ public class RuleController {
     @GetMapping("fire/{scene}")
     public String fire(@PathVariable("scene") String scene) {
         System.out.println("fire scene:" + scene);
-        executor.execute(scene, null);
+        runner.execute(scene, null);
         return "success";
     }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+  <rule-execution-set> 
+   <name>RuleExecutionSet1</name> 
+   <description>Rule Execution Set</description> 
+
+   <synonymn name="c" class="com.rsoft.sample.Customer" /> 
+
+   <rule name="Rule1" description="credit limit control rule" > 
+   	<if leftTerm="c.age" op=">" rightTerm="18" /> 
+    <if leftTerm="c.location" op="=" rightTerm="perking" /> 
+   	<then method="msg.setMessage" arg1="welcome to JRuleEngine." /> 
+   </rule> 
+  </rule-execution-set> 
