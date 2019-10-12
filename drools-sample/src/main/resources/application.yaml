@@ -44,17 +44,15 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
-ruleengine:
+re:
   enabled: true
 
 mybatis: 
   type-aliases-package: com.rsoft.**。model
   mapperLocations: classpath:/mapper/**/*Dao.xml
   
-#logging:
-#  level:
-#    com:
-#      rsoft:
-#        integral: 
-#          dao: debug
-  
+logging:
+  level:
+#    root: WARN
+    com:
+      rsoft: debug

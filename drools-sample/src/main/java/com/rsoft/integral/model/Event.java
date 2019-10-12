@@ -21,7 +21,7 @@ public class Event implements EventFact, Serializable {
     private boolean fired;
     private String message;
     private String data;
-    private transient Integer score;
+    private Integer score;
 
     @Override
     public Map<String, Object> getAttrs() {

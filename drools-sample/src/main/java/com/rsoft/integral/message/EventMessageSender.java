@@ -19,8 +19,8 @@ public class EventMessageSender {
     private Gson gson = new GsonBuilder().create();
 
     // 发送消息方法
-    public SendResult<String, String> send(EventMessage em) throws Exception {
+    public SendResult<String, String> send(Message msg) throws Exception {
         // log.info("+++++++++++++++++++++ message = {}", gson.toJson(em));
-        return kafkaTemplate.send(IntegralConsts.INTEGRAL_EVENT_TOPIC, gson.toJson(em)).get();
+        return kafkaTemplate.send(IntegralConsts.INTEGRAL_EVENT_TOPIC, gson.toJson(msg)).get();
     }
 }

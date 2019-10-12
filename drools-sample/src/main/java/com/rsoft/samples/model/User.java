@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * user.
  * 
- * @author rsoft
+ * @author bado
  *
  */
 @Data

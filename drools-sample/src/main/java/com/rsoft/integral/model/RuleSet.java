@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Rule.
  * 
- * @author rsoft
+ * @author bado
  *
  */
 @Data

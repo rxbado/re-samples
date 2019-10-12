@@ -34,17 +34,17 @@ public class EventMessageReceiver {
         if (msg.isPresent()) {
             EventMessage em = gson.fromJson((String) msg.get(), EventMessage.class);
 
-            Event event = Event.builder().userCode(em.getUserCode())//
+            Event e = Event.builder().userCode(em.getUserCode())//
                     .fired(false)//
                     .eventCode(em.getEventCode())//
                     .eventid(em.getRequestNo())//
                     .data(gson.toJson(em.getData()))//
                     .message(gson.toJson(em)).build();
 
-            int firedRuleCount = ruleExecutor.execute(event.getEventCode(), (EventFact) event);
+            int firedRuleCount = ruleExecutor.execute(e.getEventCode(), (EventFact) e);
 
-            eventDao.insert(event);
-
+            eventDao.insert(e);
+            log.debug(String.format("触发事件[%s],用户%s增加%d积分.", e.getEventCode(), e.getUserCode(), e.getScore()));
             // log.info("----------------- record =" + rec);
             // log.info("------------------ message =" + em);
         }

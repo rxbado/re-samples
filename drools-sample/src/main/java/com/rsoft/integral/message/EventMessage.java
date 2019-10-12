@@ -3,12 +3,11 @@ package com.rsoft.integral.message;
 import lombok.Builder;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Map;
 
 @Data
 @Builder
-public class EventMessage implements Serializable {
+public class EventMessage implements Message {
     private static final long serialVersionUID = 1L;
     private long timestamp;
     private String requestNo;

@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Event.
  * 
- * @author rsoft
+ * @author bado
  *
  */
 @Data

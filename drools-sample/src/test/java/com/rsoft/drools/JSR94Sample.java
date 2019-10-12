@@ -26,7 +26,7 @@ import javax.rules.admin.RuleExecutionSetRegisterException;
 /**
  * http://www.voidcn.com/article/p-zevvdfet-vp.html
  * 
- * @author rsoft
+ * @author bado
  *
  */
 public class JSR94Sample {

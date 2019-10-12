@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * RuleDao.
  * 
- * @author rsoft
+ * @author bado
  *
  */
 @Mapper

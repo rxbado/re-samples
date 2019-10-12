@@ -4,7 +4,7 @@ import com.rsoft.integral.dao.EventSourceDao;
 import com.rsoft.integral.dao.RuleSetDao;
 import com.rsoft.integral.model.EventSource;
 import com.rsoft.integral.model.RuleSet;
-import com.rsoft.ruleengine.RuleInfo;
+import com.rsoft.ruleengine.Rule;
 import com.rsoft.ruleengine.RuleSetProvider;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,27 +18,27 @@ import java.util.Map;
 
 @Component
 @Primary
-public class DbRuleSetSource implements RuleSetProvider {
+public class DbRuleSetProvider implements RuleSetProvider {
     @Autowired
     private RuleSetDao ruleSetDao;
     @Autowired
     private EventSourceDao eventSourceDao;
 
-    public List<RuleInfo> getRuleSetByScene(String scene) {
-        Map<String, List<RuleInfo>> ruleinfos = getRuleSetAsMap();
+    public List<Rule> getRuleSetByScene(String scene) {
+        Map<String, List<Rule>> ruleinfos = getRuleSet();
         return ruleinfos.get(scene);
     }
 
-    public Map<String, List<RuleInfo>> getRuleSetAsMap() {
-        Map<String, List<RuleInfo>> ruleinfos = new HashMap<>();
+    public Map<String, List<Rule>> getRuleSet() {
+        Map<String, List<Rule>> ruleinfos = new HashMap<>();
         // load all event source
         List<EventSource> sources = eventSourceDao.findAll();
         for (EventSource es : sources) {
-            List<RuleInfo> ruleinfosByScene = new ArrayList<RuleInfo>();
+            List<Rule> ruleinfosByScene = new ArrayList<Rule>();
             List<RuleSet> rulesets = ruleSetDao.findRuleSetBySource(es.getCode());
             if (rulesets != null && rulesets.size() > 0) {
                 for (RuleSet rs : rulesets) {
-                    RuleInfo ri = new RuleInfo();
+                    Rule ri = new Rule();
                     ri.setRulekey(rs.getRulekey());
                     ri.setContent(rs.getContent());
                     ri.setPriority(rs.getPriority());
