@@ -46,6 +46,10 @@ spring:
 
 re:
   enabled: true
+  namespace: test
+  caches:
+    mode: redis
+    
 
 mybatis: 
   type-aliases-package: com.rsoft.**。model
